@@ -97,9 +97,11 @@ Style the page and include a navigation bar to help the user navigate the site.
 We're getting to the big leagues now, so we'll let you figure that out on your own. [Express documentation is a useful resource](http://expressjs.com/starter/static-files.html).
 
 
-## Search Form
+## Bonuses
 
-Add a search form
+####Add Styling
+
+####Add a search form
 
 * Create a search form (can be on home page or articles index)
 * Accept `q` query string on your articles route `/articles?q=search+term`
@@ -107,7 +109,4 @@ Add a search form
     * displays list of articles filtered by search term
     * ensure the route still works without a query string (displays all articles)
 
-## BONUS
-
-Add routes to delete and edit articles. Then, try to implement working delete and edit buttons (Spoiler: DELETE and PUT are not valid form methods).
 
