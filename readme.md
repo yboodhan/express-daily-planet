@@ -78,7 +78,7 @@ You'll need to create the following `article` routes:
     * purpose: find an article by id in the array of `articles` and display it.
 
 ## Static Pages
-Create need the following `site` related routes:
+Create the following `site` related routes:
 
 * `get` `/about` serve a static about daily planet page.
 * `get` `/contact` serve a static `contact` page.
