@@ -30,32 +30,48 @@ At this point you should be able to run `nodemon` and then go to `http://localho
 
 * Create a views folder
 * Create an `index.ejs`
-* Create a partials folder in your views folder
-* Create `header.ejs` and `footer.ejs` in the partials folder
-* Add HTML to the 3 files created above
-* Render the index page on your root route with the header/footer partials.
+* Add HTML to the file created above
+* Render the index page on your root route
 
 Change your root route to render your home page (index.ejs)
 
 ```js
-app.get("/",function(req,res){
+app.get("/", function(req, res) {
   res.render('index.ejs');
 });
 ```
 
-**STOP** At this point we should be able to go to `localhost:3000` and see an html page that is the result of the contents of what is in `index.ejs`, `header.ejs`, and `footer.ejs`.
+**STOP** At this point we should be able to go to `localhost:3000` and see an html page that is the result of the contents of what is in `index.ejs`. If you'd like, feel free to use partials for parts of this page.
 
 ##Data setup
 
-To store data we need to add an array near the top of the project (index.js) to store articles. Each article will need (at least) a title and a body. Here is an example array that starts with 1 predefined article.
+To store data, we can read and write files using the `fs` module. Specifically, we can read and write JSON files. Create a folder called `data` in the project and create a JSON object with a sample article.
 
-```javascript
-var articles = [
-  {title: 'Article title', body: 'this is the first article body'}
-];
+```json
+[
+  {
+    "title": "Article title",
+    "body": "This is the first article body"
+  }
+]
 ```
 
-**Note:** Articles will be stored in memory, meaning every time the server is restarted via nodemon, the array will be reset to this starting value. The solution to this problem is databases, which we'll get to later on.
+We can read this file using functions provided by `fs`. Note that `fs` stands for *file system*, and it's included with Node (no need to install it via npm).
+
+**Read a JSON file**
+
+```js
+var fs = require('fs');
+var fileContents = fs.readFileSync('./data.json');
+var data = JSON.parse(fileContents);
+```
+
+**Write a JS object to a JSON file**
+
+```js
+var fs = require('fs');
+fs.writeFileSync('./data.json', JSON.stringify(data));
+```
 
 ## Routes
 
@@ -72,7 +88,7 @@ You'll need to create the following `article` routes:
     * purpose: displays a form that users use to create a new article
 * `post` `/articles`
     * view: none (redirects to /articles after the article is created)
-    * purpose: creates a new article (adds to articles array)
+    * purpose: creates a new article (adds to articles array and saves the file)
 * `get` `/articles/:id`
     * view: views/articles/show.ejs
     * purpose: find an article by id in the array of `articles` and display it.
