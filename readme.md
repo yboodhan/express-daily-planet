@@ -19,7 +19,7 @@ To get going we need to set up a basic express server (see today's notes for ful
 Use this for your basic root route just to make sure it is working.
 
 ```js
-app.get("/",function(req,res){
+app.get("/",function(req,res) {
   res.send('HELLO TACO!!!');
 });
 ```
@@ -94,7 +94,7 @@ You'll need to create the following `article` routes:
     * purpose: find an article by id in the array of `articles` and display it.
 
 ## Static Pages
-Create the following `site` related routes:
+Create the following `site` related routes. You can use EJS with these pages, but you won't be passing any data.
 
 * `get` `/about` serve a static about daily planet page.
 * `get` `/contact` serve a static `contact` page.
