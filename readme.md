@@ -52,7 +52,7 @@ app.get('/', function(req, res) {
 
 #### Data setup
 
-To store data, we can read and write files using the `fs` module. Specifically, we can read and write JSON files. Create a folder called `data.json` in the project and create a JSON object with a sample article.
+To store data, we can read and write files using the `fs` module. Specifically, we can read and write JSON files. Create a file called `data.json` in the project and create a JSON object with a sample article.
 
 ```json
 [
