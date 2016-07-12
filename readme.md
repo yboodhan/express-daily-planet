@@ -142,3 +142,9 @@ We're getting to the big leagues now, so we'll let you figure that out on your o
     * ensure the route still works without a query string (displays all articles)
 * There's no magic back-end solution to filtering! Use what you know about setting up routes, figure out how to access the query string and use regular JavaScript logic and array manipulation to build up an array of results.
 
+
+---
+
+## Licensing
+1. All content is licensed under a CC-BY-NC-SA 4.0 license.
+2. All software code is licensed under GNU GPLv3. For commercial use or alternative licensing, please contact legal@ga.co.
