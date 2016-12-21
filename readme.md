@@ -4,19 +4,23 @@
 
 Welcome to the Daily Planet. We need your superhuman developer skills to help us share news with the world. We've seen that you have some Express knowledge and need you to make us a MVP website as soon as possible.
 
-You'll need to use a JSON file of `articles` to create and display articles.
+You'll need to hook your server up to a database to create, stoore and display
+articles.
 
 ##Getting Started
 
-> For your first Express deliverable, we'll be setting everything up from scratch. In the future, we'll start using a template, complete with linters and all!
+> For your first Express deliverable, we'll be setting everything up from
+> scratch. In the future, we'll start using a template, complete with linters
+> and all!
 
 #### Setting Up the Server
 
-To get going we need to set up a basic Express server (see today's notes for full details).
+To get going we need to set up a basic Express server (see today's notes for
+full details).
 
 * Fork/clone this repository
 * Run `npm init` in the directory
-* Install express, ejs, and body-parser via npm
+* Install express, ejs, body-parser, express-ejs-layouts, pg, pg-hstore via npm
 * Create an index.js file
 * Setup a basic Express server with a root route
 
@@ -52,37 +56,17 @@ app.get('/', function(req, res) {
 
 #### Data setup
 
-To store data, we can read and write files using the `fs` module. Specifically, we can read and write JSON files. Create a file called `data.json` in the project and create a JSON object with a sample article.
+We'll store all the articles in Postgres. Use Sequilize to create a model
+representing an article. Articles should have a `title` property and a `body`
+property.
 
-```json
-[
-  {
-    "title": "Article title",
-    "body": "This is the first article body"
-  }
-]
-```
-
-We can read this file using functions provided by `fs`. Note that `fs` stands for *file system*, and it's included with Node (no need to install it via npm). Here are some examples you may want to play with.
-
-**Read a JSON file**
-
-```js
-var fs = require('fs');
-var fileContents = fs.readFileSync('./data.json');
-var data = JSON.parse(fileContents);
-```
-
-**Write a JS object to a JSON file**
-
-```js
-var fs = require('fs');
-fs.writeFileSync('./data.json', JSON.stringify(data));
-```
+Reference course notes on [Sequilize](https://wdi_sea.gitbooks.io/notes/content/05-express/express-sequelize/readme.html)
 
 #### Routes
+You'll need to create the following `articles` routes. Notice: you won't need
+to create routes to update or delete articles.
 
-You'll need to create the following `articles` routes:
+Here's the class notes on implementing basic [CRUD in Express](https://wdi_sea.gitbooks.io/notes/content/05-express/express-intro/05crudexpress.html)
 
 * `GET /`
   * view: `views/index.ejs`
@@ -109,23 +93,28 @@ Create the following routes for static pages. You can use EJS with these pages, 
 #### Structure
 
 Your EJS views should be organized using folders. Here is an example.
+Use the `express-ejs-layouts` module so the main structure of your site
+appears in only one file, the `layout.ejs` file.
 
 ```
 - express-daily-planet
   - views
+    - layout.ejs
     - articles
       - index.ejs
       - new.ejs
       - show.ejs
     - site
-      - index.ejs
+      - home.ejs
       - about.ejs
       - contact.ejs
 ```
 
 #### Styling (Bootstrap, Materialize, etc.)
 
-Style the page and include a navigation bar to help the user navigate the site. Note that this is a news site, so style accordingly.
+Style the page and include a navigation bar to help the user navigate the site.
+Note that this is a news site, so style accordingly. Put the navbar in your
+`layout.ejs` file to it appears everywhere easily!
 
 ##### What about static files, like CSS and front-end JS?
 
