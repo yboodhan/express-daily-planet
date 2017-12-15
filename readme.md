@@ -7,7 +7,7 @@ Welcome to the Daily Planet. We need your superhuman developer skills to help us
 You'll need to hook your server up to a database to create, stoore and display
 articles.
 
-##Getting Started
+## Getting Started
 
 > For your first Express deliverable, we'll be setting everything up from
 > scratch. In the future, we'll start using a template, complete with linters
@@ -118,7 +118,7 @@ Note that this is a news site, so style accordingly. Put the navbar in your
 
 ##### What about static files, like CSS and front-end JS?
 
-We're getting to the big leagues now, so we'll let you figure that out on your own. [Express documentation is a useful resource](http://expressjs.com/starter/static-files.html).
+We'll need to set up a folder for serving up static files. Usually by convention, this will be a folder in your root directory called either `public` or `static`. Aside from that, you will need a small bit of code to let Express know where to look for those files. Don't worry - it's fairly straight-forward! Check out [Express documentation](http://expressjs.com/starter/static-files.html) for a useful resource.
 
 ## Bonus
 
