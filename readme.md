@@ -1,4 +1,4 @@
-# Making Headlines - Daily Planet
+# Daily Planet (Part 2: The databasenening)
 
 ![Daily Planet](http://blogs.smithsonianmag.com/design/files/2013/06/first-daily-planet1.jpg)
 
@@ -10,7 +10,7 @@ You'll need to hook your server up to a database to create, store and display ar
 
 You may have done another version of this assignment for forming CRUD routes without a database. If so, feel free to use that as your starter code! In this case, our goal is to alter it to use a real SQL database instead of storing data in a JSON file. Delete the models folder and references to it, and we'll replace them with Sequelize.
 
-If you did not do a previous version of this assignment, start from scratch following the directions from the class lesson.
+If you did not do a previous version of this assignment, start from scratch by following the directions from the class lesson.
 
 ## Getting Started
 
