@@ -1,4 +1,4 @@
-# Daily Planet (Part 2: The databasenening)
+# Daily Planet (Adding a database!)
 
 ![Daily Planet](http://blogs.smithsonianmag.com/design/files/2013/06/first-daily-planet1.jpg)
 
@@ -6,14 +6,7 @@ Welcome to the Daily Planet. We need your superhuman developer skills to help us
 
 You'll need to hook your server up to a database to create, store and display articles.
 
-## NOTE!
-
-You may have done another version of this assignment for forming CRUD routes without a database. If so, feel free to use that as your starter code! In this case, our goal is to alter it to use a real SQL database instead of storing data in a JSON file. Delete the models folder and references to it, and we'll replace them with Sequelize.
-
-If you did not do a previous version of this assignment, start from scratch by following the directions from the class lesson.
-
 ## Getting Started
-
 
 #### Setting up the Server (from existing code)
 
@@ -33,9 +26,9 @@ If you have a previous version of this assignment:
 To get going we need to set up a basic Express server (see today's notes for
 full details).
 
-* Fork/clone this repository
+* Fork and clone this repository
 * Run `npm init` in the directory
-* Install express, ejs, body-parser, express-ejs-layouts, pg, pg-hstore via npm
+* Install express, ejs, body-parser, express-ejs-layouts, pg via npm
 * Create an index.js file
 * Setup a basic Express server with a root route
 
@@ -78,6 +71,7 @@ property.
 Reference course notes on [Sequelize](https://wdi_sea.gitbooks.io/notes/content/05-express/express-sequelize/readme.html)
 
 #### Routes
+
 You'll need to create the following `articles` routes. Notice: you won't need
 to create routes to update or delete articles at this time.
 
@@ -100,6 +94,7 @@ Here's the class notes on implementing basic [CRUD in Express](https://wdi_sea.g
   * purpose: find an article by id in the array of `articles` and display it.
 
 #### Static Pages
+
 Create the following routes for static pages. You can use EJS with these pages, but you won't be passing any data.
 
 * `GET /about` serve a static about daily planet page.
