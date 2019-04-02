@@ -8,20 +8,7 @@ You'll need to hook your server up to a database to create, store and display ar
 
 ## Getting Started
 
-#### Setting up the Server (from existing code)
-
-If you have a previous version of this assignment:
-
-* Delete the models folder
-* Set up Sequelize
-  * The `sequelize init` command. This sets up a config.json file.
-  * Set up your config file as appropriate - change the database name, credentials, and SQL flavor.
-  * Create a database for this app to use on your local machine
-  * Don't create your tables with raw SQL. Instead use the `sequelize model:create` command. Remember to make the names singular and lower case!
-  * Remember that even though you've created the models, the tables don't actually get created until you run `sequelize db:migrate`!
-* Replace the old references to the JSON file with actual Sequelize commands to read/write to the database
-
-#### Setting up the Server (if starting from scratch)
+#### Setting up the Server
 
 To get going we need to set up a basic Express server (see today's notes for
 full details).
@@ -42,11 +29,9 @@ app.get('/', function(req, res) {
 
 At this point you should be able to run `nodemon` and then go to `http://localhost:3000` and see "HELLO TACO!!!".
 
-## Requirements
-
 #### Create a home page with a view
 
-* Create a views folder
+* Create a `views` folder
 * Create a file for your home page: `index.ejs`
 * Add HTML to the file created above
 * Render the index page on your root route
@@ -60,20 +45,67 @@ app.get('/', function(req, res) {
 });
 ```
 
-**STOP** At this point we should be able to go to `localhost:3000` and see an html page that is the result of the contents of what is in `index.ejs`. If you'd like, feel free to use partials for parts of this page.
+**STOP** At this point we should be able to go to `localhost:3000` and see an html page that is the result of the contents of what is in `index.ejs`. 
 
-#### Data setup
+> Note: If you'd like, feel free to use partials for parts of the page.
+
+#### Structure
+
+Your EJS views should be organized using folders. Here is an example.
+Use the `express-ejs-layouts` module so the main structure of your site
+appears in only one file, the `layout.ejs` file.
+
+```
+- express-daily-planet
+  - views
+    - layout.ejs
+    - articles
+      - index.ejs
+      - new.ejs
+      - show.ejs
+    - site
+      - home.ejs
+      - about.ejs
+      - contact.ejs
+```
+
+### Data setup
 
 We'll store all the articles in Postgres. Use Sequelize to create a model
-representing an article. Articles should have a `title` property and a `body`
+representing an article. Articles should have a `title` property and a `content`
 property.
 
 Reference course notes on [Sequelize](https://wdi_sea.gitbooks.io/notes/content/05-express/express-sequelize/readme.html)
 
+#### The Articles Model
+
+| Column Name | Column Type |
+| ----------------- | ---------------------- |
+| title | string |
+| content | text |
+| author | string |
+
+Use this table as a reference when running the `sequelize model:create` command in the next section
+
+> Note: You do not need to create the columns `id`, `createdAt`, or `updatedAt`. Sequelize gives you those ones for free.
+
+#### Setting up Sequelize
+
+* Set up Sequelize
+  * The `sequelize init` command. This sets up a `config.json` file.
+  * Set up your config file as appropriate - change the database name, credentials, and SQL flavor. We'll use `postgres` as our SQL flavor!
+  * Create a database for this app to use on your local machine with the `createdb DB_NAME` command. Be sure to replace `DB_NAME` with an actual name of your actual database!
+  * Don't create your tables with raw SQL. Instead use the `sequelize model:create` command. Remember to make the names singular and lower case!
+  * Remember that even though you've created the ~models~, the tables don't actually get created until you run `sequelize db:migrate`!
+* Replace the old references to the JSON file with actual Sequelize commands to read/write to the database
+
+> Tip: You can run `sequelize db:migrate:undo` to reverse a migration
+
 #### Routes
 
-You'll need to create the following `articles` routes. Notice: you won't need
-to create routes to update or delete articles at this time.
+You'll need to create the following `articles` routes.
+
+> Note: you won't need to create routes to update or delete articles at this time. We'll go back and do this in a later assignment
 
 Here's the class notes on implementing basic [CRUD in Express](https://wdi_sea.gitbooks.io/notes/content/05-express/express-intro/05crudexpress.html)
 
@@ -95,30 +127,12 @@ Here's the class notes on implementing basic [CRUD in Express](https://wdi_sea.g
 
 #### Static Pages
 
-Create the following routes for static pages. You can use EJS with these pages, but you won't be passing any data.
+Static pages are pages with data that doesn't get dynamically generated. Often it's data that doesn't change or very rarely changes. A company's "about" page is a good example of a page that changes very infrequently. Instead of having an EJS file for this type of page you might want to just write an HTML file and send it as a response with the `sendFile` method. You can use EJS with these pages if you would rather, but you won't be passing any data to them.
+
+Create the following routes for static pages. Your pick whether to use EJS files or HTML files.
 
 * `GET /about` serve a static about daily planet page.
 * `GET /contact` serve a static contact page.
-
-#### Structure
-
-Your EJS views should be organized using folders. Here is an example.
-Use the `express-ejs-layouts` module so the main structure of your site
-appears in only one file, the `layout.ejs` file.
-
-```
-- express-daily-planet
-  - views
-    - layout.ejs
-    - articles
-      - index.ejs
-      - new.ejs
-      - show.ejs
-    - site
-      - home.ejs
-      - about.ejs
-      - contact.ejs
-```
 
 #### Styling (Bootstrap, Materialize, etc.)
 
