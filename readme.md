@@ -6,14 +6,35 @@ Welcome to the Daily Planet. We need your superhuman developer skills to help us
 
 You'll need to hook your server up to a database to create, store and display articles.
 
+## Prerequisites
+
+Before attempting this assignment, please ensure you have learned the following:
+
+* Creating an Express app from scratch
+* GET and POST routes
+* Using SQL
+* Using ORMs such as Sequelize
+
 ## Getting Started
 
-#### Setting up the Server
+* Fork and clone this repository
+* Follow the below directions
+
+## Requirements
+
+At the end of this deliverable, you will have
+
+* A database with an `articles` table
+* A working Express app with several routes
+* Working Sequelize that interfaces between your Express app and your database
+
+## Directions
+
+### Setting up the Express App
 
 To get going we need to set up a basic Express server (see today's notes for
 full details).
 
-* Fork and clone this repository
 * Run `npm init` in the directory
 * Install express, ejs, body-parser, express-ejs-layouts, pg via npm
 * Create an index.js file
@@ -107,8 +128,6 @@ You'll need to create the following `articles` routes.
 
 > Note: you won't need to create routes to update or delete articles at this time. We'll go back and do this in a later assignment
 
-Here's the class notes on implementing basic [CRUD in Express](https://wdi_sea.gitbooks.io/notes/content/05-express/express-intro/05crudexpress.html)
-
 * `GET /`
   * view: `views/index.ejs`
   * purpose: Serve the homepage of your site.
@@ -125,6 +144,30 @@ Here's the class notes on implementing basic [CRUD in Express](https://wdi_sea.g
   * view: `views/articles/show.ejs`
   * purpose: find an article by id in the array of `articles` and display it.
 
+### Your Turn
+
+Here's the class notes on implementing basic [CRUD in Express](https://wdi_sea.gitbooks.io/notes/content/05-express/express-intro/05crudexpress.html)
+
+Refer to the list above and try to implement each route's requirements. For example, the `GET /articles` route needs a list of all articles. You can use Sequelize's `findAll()` function for this! Your code might look something like this:
+
+```js
+db.Article.findAll()
+.then(function(articles){
+  // TODO: Pass articles array to relevant EJS page
+})
+.catch(function(err){
+  // TODO: Some error handling!
+})
+```
+
+Keep in mind that your articles array could be empty if you haven't put any articles into it yet. 
+
+> Tip: Make sure you include the models folder in your controller!
+
+### Extras
+
+It's up to you how far to go with the styling and static files. If you've really struggled up to this point, it's okay to skip this section.
+
 #### Static Pages
 
 Static pages are pages with data that doesn't get dynamically generated. Often it's data that doesn't change or very rarely changes. A company's "about" page is a good example of a page that changes very infrequently. Instead of having an EJS file for this type of page you might want to just write an HTML file and send it as a response with the `sendFile` method. You can use EJS with these pages if you would rather, but you won't be passing any data to them.
@@ -134,20 +177,18 @@ Create the following routes for static pages. Your pick whether to use EJS files
 * `GET /about` serve a static about daily planet page.
 * `GET /contact` serve a static contact page.
 
+#### How do I use static files, like CSS, HTML, and front-end JS?
+
+We'll need to set up a folder for serving up static files. Usually by convention, this will be a folder in your root directory called either `public` or `static`. Aside from that, you will need a small bit of code to let Express know where to look for those files. Don't worry - it's fairly straight-forward! Check out [Express documentation](http://expressjs.com/starter/static-files.html) for a useful resource.
+
 #### Styling (Bootstrap, Materialize, etc.)
 
 Style the page and include a navigation bar to help the user navigate the site.
 Note that this is a news site, so style accordingly. Put the navbar in your
-`layout.ejs` file to it appears everywhere easily!
-
-##### What about static files, like CSS and front-end JS?
-
-We'll need to set up a folder for serving up static files. Usually by convention, this will be a folder in your root directory called either `public` or `static`. Aside from that, you will need a small bit of code to let Express know where to look for those files. Don't worry - it's fairly straight-forward! Check out [Express documentation](http://expressjs.com/starter/static-files.html) for a useful resource.
+`layout.ejs` file so it appears everywhere easily! 
 
 ## Bonus Ideas
 
-* Create a DELETE route for removing articles
-* Create a PUT route for editing articles
 * Create a search form (can be on home page or articles index)
 * Accept `q` query string on your articles route `/articles?q=search+term`
     * find how to access the query string from the request (Hint: the query isn't in `req.params`)
