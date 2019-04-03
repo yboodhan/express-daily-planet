@@ -96,8 +96,6 @@ We'll store all the articles in Postgres. Use Sequelize to create a model
 representing an article. Articles should have a `title` property and a `content`
 property.
 
-Reference course notes on [Sequelize](https://wdi_sea.gitbooks.io/notes/content/05-express/express-sequelize/readme.html)
-
 #### The Articles Model
 
 | Column Name | Column Type |
@@ -124,7 +122,7 @@ Use this table as a reference when running the `sequelize model:create` command 
 
 #### Routes
 
-You'll need to create the following `articles` routes.
+You'll need to create the following `articles` routes. Here's the class notes on implementing basic [CRUD in Express](https://gawdiseattle.gitbooks.io/wdi/05-node-express/express-REST-crud/00readme.html)
 
 > Note: you won't need to create routes to update or delete articles at this time. We'll go back and do this in a later assignment
 
@@ -146,7 +144,7 @@ You'll need to create the following `articles` routes.
 
 ### Your Turn
 
-Here's the class notes on implementing basic [CRUD in Express](https://wdi_sea.gitbooks.io/notes/content/05-express/express-intro/05crudexpress.html)
+Reference course notes on [Sequelize](https://wdi_sea.gitbooks.io/notes/content/05-express/express-sequelize/readme.html) for how to use Sequelize's functions.
 
 Refer to the list above and try to implement each route's requirements. For example, the `GET /articles` route needs a list of all articles. You can use Sequelize's `findAll()` function for this! Your code might look something like this:
 
