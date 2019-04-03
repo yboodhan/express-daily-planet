@@ -115,7 +115,7 @@ Use this table as a reference when running the `sequelize model:create` command 
   * Set up your config file as appropriate - change the database name, credentials, and SQL flavor. We'll use `postgres` as our SQL flavor!
   * Create a database for this app to use on your local machine with the `createdb DB_NAME` command. Be sure to replace `DB_NAME` with an actual name of your actual database!
   * Don't create your tables with raw SQL. Instead use the `sequelize model:create` command. Remember to make the names singular and lower case!
-  * Remember that even though you've created the ~models~, the tables don't actually get created until you run `sequelize db:migrate`!
+  * Remember that even though you've created the models, the tables don't actually get created until you run `sequelize db:migrate`!
 * Replace the old references to the JSON file with actual Sequelize commands to read/write to the database
 
 > Tip: You can run `sequelize db:migrate:undo` to reverse a migration
@@ -144,7 +144,7 @@ You'll need to create the following `articles` routes. Here's the class notes on
 
 ### Your Turn
 
-Reference course notes on [Sequelize](https://wdi_sea.gitbooks.io/notes/content/05-express/express-sequelize/readme.html) for how to use Sequelize's functions.
+Reference course notes on [Sequelize](https://gawdiseattle.gitbooks.io/wdi/05-node-express/express-sequelize/04usingmodels.html) for how to use Sequelize's functions.
 
 Refer to the list above and try to implement each route's requirements. For example, the `GET /articles` route needs a list of all articles. You can use Sequelize's `findAll()` function for this! Your code might look something like this:
 
